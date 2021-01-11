@@ -7,7 +7,7 @@ RUN         apk --update add --no-cache --virtual temp-dependencies \
             apk add --no-cache openssh-client \
             ca-certificates \
             sshpass &&\
-            pip install ansible pywinrm &&\
+            pip install --no-cache-dir ansible pywinrm &&\
             apk del temp-dependencies &&\
             rm -rf /var/cache/apk/* &&\
             mkdir /ansible &&\
@@ -22,3 +22,5 @@ COPY        ./ansible.cfg /ansible/ansible.cfg
 USER        ansible
 
 WORKDIR     /ansible
+
+CMD         [ "ansible", "--version" ]
