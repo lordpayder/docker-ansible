@@ -23,4 +23,6 @@ USER        ansible
 
 WORKDIR     /ansible
 
+VOLUME      [ "/ansible" ]
+
 CMD         [ "ansible", "--version" ]
