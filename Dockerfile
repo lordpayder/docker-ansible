@@ -17,12 +17,10 @@ RUN         apk --update add --no-cache --virtual temp-dependencies \
             chmod -R 700 /ansible &&\
             chown ansible:ansible /usr/local/bin/ansible
 
-COPY        ./ansible.cfg /ansible/ansible.cfg
+COPY        ./ansible.cfg /etc/ansible/ansible.cfg
 
 USER        ansible
 
 WORKDIR     /ansible
-
-VOLUME      [ "/ansible" ]
 
 CMD         [ "ansible", "--version" ]
